@@ -1,5 +1,5 @@
 CREATE TABLE aluno 
-	( numero_aluno INTEGER NOT NULL CONSTRAINT PK_tbl_aluno PRIMARY KEY,
+	( numero_aluno INTEGER NOT NULL CONSTRAINT PK_aluno PRIMARY KEY,
 	nome_aluno TEXT(50) NOT NULL,
 	sobrenome_aluno TEXT(50) NOT NULL,
 	data_de_nascimento  Date)
@@ -13,11 +13,11 @@ CREATE TABLE curso (
     	codigo_curso AUTOINCREMENT PRIMARY KEY,
     	nome_curso varchar(45) NOT NULL);
 
-CREATE TABLE disciplia
+CREATE TABLE disciplina
  	(codigo_disciplina AUTOINCREMENT CONSTRAINT pk_codigo_disciplina  PRIMARY KEY,
-	nome_disciplia VARCHAR (60) NOT NULL,
+	nome_disciplina VARCHAR (60) NOT NULL,
 	codigo_curso INTEGER,
- 	CONSTRAINT FK_curso_disciplia FOREIGN KEY (codigo_curso) REFERENCES curso (codigo_curso) )
+ 	CONSTRAINT FK_curso_disciplina FOREIGN KEY (codigo_curso) REFERENCES curso (codigo_curso) )
 
 
 
@@ -28,7 +28,7 @@ CREATE TABLE disciplina_docente
 	data_fim_contrato datetime,
 	CONSTRAINT fk_disciplina_docente_docente FOREIGN KEY (id_docente) REFERENCES docente (id_docente),
  	CONSTRAINT fk_disciplina_docente_disciplina    FOREIGN KEY (codigo_disciplina)      REFERENCES disciplina (codigo_disciplina),
-	CONSTRAINT PK_disciplina_docente PRIMARY KEY (id_docente, codigo_disciplina)  );
+	CONSTRAINT pk_disciplina_docente PRIMARY KEY (id_docente, codigo_disciplina)  );
 
 CREATE TABLE nota
 	(numero_aluno  INTEGER NOT NULL,
